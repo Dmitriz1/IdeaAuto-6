@@ -21,17 +21,17 @@ public class TransferTest {
         login("vasya", "qwerty123", "12345");
 
         DashboardPage dashboardPage = new DashboardPage();
-        int initialBalanceFirstCard = dashboardPage.getCardBalance("**** **** **** 0001");
-        int initialBalanceSecondCard = dashboardPage.getCardBalance("**** **** **** 0002");
+        int initialBalanceFirstCard = dashboardPage.getCardBalance(dashboardPage.card1);
+        int initialBalanceSecondCard = dashboardPage.getCardBalance(dashboardPage.card2);
 
-        TransferPage transferPage = dashboardPage.selectCardForTransfer("**** **** **** 0001");
+        TransferPage transferPage = dashboardPage.selectCardForTransfer(dashboardPage.card1);
         transferPage.transferAmount("5559 0000 0000 0002", 5000);
         dashboardPage.refresh();
 
-        int finalBalanceFirstCard = dashboardPage.getCardBalance("**** **** **** 0001");
-        int finalBalanceSecondCard = dashboardPage.getCardBalance("**** **** **** 0002");
+        int finalBalanceFirstCard = dashboardPage.getCardBalance(dashboardPage.card1);
+        int finalBalanceSecondCard = dashboardPage.getCardBalance(dashboardPage.card2);
 
         assertEquals(initialBalanceFirstCard + 5000, finalBalanceFirstCard);
-        assertEquals(initialBalanceSecondCard + 5000, finalBalanceSecondCard);
+        assertEquals(initialBalanceSecondCard - 5000, finalBalanceSecondCard);
     }
 }
