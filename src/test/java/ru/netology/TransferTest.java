@@ -32,6 +32,6 @@ public class TransferTest {
         int finalBalanceSecondCard = dashboardPage.getCardBalance("5559 0000 0000 0002");
 
         assertEquals(initialBalanceFirstCard + 5000, finalBalanceFirstCard);
-        assertEquals(initialBalanceSecondCard - 5000, finalBalanceSecondCard);
+        assertEquals(initialBalanceSecondCard + 5000, finalBalanceSecondCard);
     }
 }

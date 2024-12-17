@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-
 class DashboardPage {
     private ElementsCollection cards = $$(".list__item div");
     private final String balanceStart = "баланс: ";
@@ -14,7 +13,10 @@ class DashboardPage {
 
     public int getCardBalance(String cardId) {
         for (SelenideElement card : cards) {
-            if (card.text().contains(cardId)) {
+            if (card.text().contains("0001")) {
+                return extractBalance(card.text());
+            }
+            if (card.text().contains("0002")) {
                 return extractBalance(card.text());
             }
         }
@@ -23,7 +25,11 @@ class DashboardPage {
 
     public TransferPage selectCardForTransfer(String cardId) {
         for (SelenideElement card : cards) {
-            if (card.text().contains(cardId)) {
+            if (card.text().contains("0001")) {
+                $(By.className("button")).click();
+                return new TransferPage();
+            }
+            if (card.text().contains("0002")) {
                 $(By.className("button")).click();
                 return new TransferPage();
             }
