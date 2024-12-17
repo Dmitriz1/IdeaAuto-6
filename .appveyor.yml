@@ -15,5 +15,5 @@ build_script:
   - ps: chmod +x ./gradlew
   - ps: ./gradlew test --info "-Dselenide.headless=true"
 
-  on_finish:
+on_finish:
   - ps: Stop-Process -Id $App.Id
