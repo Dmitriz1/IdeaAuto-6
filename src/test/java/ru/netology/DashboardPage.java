@@ -13,10 +13,10 @@ class DashboardPage {
 
     public int getCardBalance(String cardId) {
         for (SelenideElement card : cards) {
-            if (card.text().contains("0001")) {
+            if (card.text().contains("**** **** ****")) {
                 return extractBalance(card.text());
             }
-            if (card.text().contains("0002")) {
+            if (card.text().contains("**** **** ****")) {
                 return extractBalance(card.text());
             }
         }
@@ -25,11 +25,11 @@ class DashboardPage {
 
     public TransferPage selectCardForTransfer(String cardId) {
         for (SelenideElement card : cards) {
-            if (card.text().contains("0001")) {
+            if (card.text().contains("**** **** ****")) {
                 $(By.className("button")).click();
                 return new TransferPage();
             }
-            if (card.text().contains("0002")) {
+            if (card.text().contains("**** **** ****")) {
                 $(By.className("button")).click();
                 return new TransferPage();
             }

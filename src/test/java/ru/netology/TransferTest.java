@@ -28,8 +28,8 @@ public class TransferTest {
         transferPage.transferAmount("5559 0000 0000 0002", 5000);
         dashboardPage.refresh();
 
-        int finalBalanceFirstCard = dashboardPage.getCardBalance("5559 0000 0000 0001");
-        int finalBalanceSecondCard = dashboardPage.getCardBalance("5559 0000 0000 0002");
+        int finalBalanceFirstCard = dashboardPage.getCardBalance("**** **** **** 0001");
+        int finalBalanceSecondCard = dashboardPage.getCardBalance("**** **** **** 0002");
 
         assertEquals(initialBalanceFirstCard + 5000, finalBalanceFirstCard);
         assertEquals(initialBalanceSecondCard + 5000, finalBalanceSecondCard);
